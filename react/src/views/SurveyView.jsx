@@ -118,7 +118,7 @@ export default function SurveyView() {
       <div className="flex gap-6">
       <TButton color="green" href={`/survey/public/${survey.slug}`}>
         <LinkIcon className="h-4 w-4 mr-2" />
-        Publick Link
+          Public Link
       </TButton>
       <TButton color="red" onClick={onDelete}>
       <TrashIcon className="h-4 w-4 mr-2" />
