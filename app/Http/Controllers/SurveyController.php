@@ -283,11 +283,12 @@ class SurveyController extends Controller
          ]);
          
          foreach ($validated['answers'] as $questionId => $answer) {
-             $question = SurveyQuestion::where(['id' => $questionId, 'survey_id' => $survey->id])->get();
+             $question = SurveyQuestion::where(['id' => $questionId, 'survey_id' => $survey->id])->first();
              if (!$question) {
                  return response("Invalid question ID: \"$questionId\"",400);
              }
              $data = [
+                'survey_id' => $survey->id,
                  'survey_question_id' => $questionId,
                  'survey_answer_id' => $surveyAnswer->id,
                  'answer' => is_array($answer) ? json_encode($answer) : $answer
