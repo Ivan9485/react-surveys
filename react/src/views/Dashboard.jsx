@@ -34,7 +34,7 @@ export default function Dashboard() {
           </DashboardCard>
           <DashboardCard title="Total Answers" className="order-2 lg:order-4"
           style={{animationDelay:'0.2s'}}>
-          {data.totalSurveys}
+          {data.totalAnswers}
           </DashboardCard>
           <DashboardCard title="Latest Survey" className="order-3 lg:order-1 row-span-2"
           style={{animationDelay:'0.1s'}}>

@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react"
 
 const QuestionDisplay = ({data}) => {
+  const [uniques, setUniques] = useState([])
 
-  const [isQuestionOpen, setIsQuestionOpen] = useState([]);
+  useEffect(()=>{
+    if (!data.myAnswers) return;
+    const countDict = data.myAnswers.reduce((acc,curr)=>{
+      const {answers} = curr;
+      acc[answers] = (acc[answers] || 0) + 1;
+      return acc;
+    }, {});
 
-  // const ToggleQuestion = (index) => {
-  //   if (isQuestionOpen.includes(index)) {
-  //     setIsQuestionOpen(isQuestionOpen.filter((index)=>))
-  //   }
-  // }
-
+    const result = data.myAnswers.map((obj)=>({
+      ...obj,
+      count: countDict[obj.answers] || 0,
+    }));
+    console.log('este es el resultado',result);
+    setUniques(result);
+  },[data])
+  console.log('my data is:',data);
   return (
     <>
     {data.myAnswers && data.myAnswers.length > 0 ? (
@@ -24,9 +33,17 @@ const QuestionDisplay = ({data}) => {
             <p className="">{question.answers.length} respuestas</p>
               </div>
             <div className="flex flex-col font-bold bg-white shadow-md border-2 w-full h-full p-1 overflow-auto ">
-              {question.answers.map((answer,index)=>(
-                <p className="bg-slate-200 rounded-md p-1" key={index}>{answer}</p>
-              ))}
+              {question.type === "text" && (
+                question.answers.map((answer,index)=>(
+                <p className="bg-slate-200 rounded-md p-1 my-1" key={index}>{answer}</p>
+              )))
+              }
+              {question.type === "select" && (
+                question.answers.map((answer,index)=>(
+                <p className="bg-slate-200 rounded-md p-1 my-1" key={index}>{answer}</p>
+              )))
+              }
+
             </div>
             
             

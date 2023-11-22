@@ -6,6 +6,7 @@ import { useStateContext } from '../contexts/ContextProvider'
 import { Navigate} from "react-router-dom";
 import axiosClient from '../axios'
 import Toast from './Toast'
+import PFLOGO from '../assets/PFLogo.svg';
 
 const navigation = [
   { name: 'Dashboard', to: '/' },
@@ -52,7 +53,7 @@ export default function DefaultLayout() {
                     <div className="flex-shrink-0">
                       <img
                         className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                        src={PFLOGO}
                         alt="Your Company"
                       />
                     </div>
