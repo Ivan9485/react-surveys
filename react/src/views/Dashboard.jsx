@@ -26,7 +26,7 @@ export default function Dashboard() {
     <PageComponent title="Dashboard">
       {loading && <div className="flex justify-center">Loading...</div>}
       {!loading && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-gray-700
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-gray-700
         )">
           <DashboardCard title="Total Surveys" className="order-1 lg:order-2"
           style={{animationDelay:'0.1s'}}>

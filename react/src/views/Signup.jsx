@@ -40,6 +40,7 @@ export default function Signup() {
 
   return (
     <>
+    <div className="flex flex-col">
       <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
         Signup for free
       </h2>
@@ -55,15 +56,16 @@ export default function Signup() {
 
       {error.__html && (<div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}>
       </div>)}
-
+      </div>
+    <div className="w-full">
       <form
         onSubmit={onSubmit}
-        className="mt-8 space-y-6  sm:mx-24 items-center justify-center"
+        className="mt-8 lg:px-60 "
         action="#"
         method="POST"
       >
         <input type="hidden" name="remember" defaultValue="true" />
-        <div className="-space-y-px rounded-md shadow-sm">
+        <div className=" rounded-md shadow-sm">
           <div>
             <label htmlFor="full-name" className="sr-only">
               Full Name
@@ -75,7 +77,7 @@ export default function Signup() {
               required
               value={fullName}
               onChange={ev => setFullName(ev.target.value)}
-              className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              className=" block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Full Name"
             />
           </div>
@@ -91,7 +93,7 @@ export default function Signup() {
               required
               value={email}
               onChange={ev => setEmail(ev.target.value)}
-              className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              className=" block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Email address"
             />
           </div>
@@ -107,7 +109,7 @@ export default function Signup() {
               required
               value={password}
               onChange={ev => setPassword(ev.target.value)}
-              className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              className=" block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Password"
             />
           </div>
@@ -123,7 +125,7 @@ export default function Signup() {
               required
               value={passwordConfirmation}
               onChange={ev => setPasswordConfirmation(ev.target.value)}
-              className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              className=" block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Password Confirmation"
             />
           </div>
@@ -144,6 +146,7 @@ export default function Signup() {
           </button>
         </div>
       </form>
+      </div>
     </>
   );
 }
