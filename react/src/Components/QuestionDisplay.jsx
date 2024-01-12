@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const QuestionDisplay = ({data}) => {
   const [uniques, setUniques] = useState([])
@@ -19,6 +20,10 @@ const QuestionDisplay = ({data}) => {
     setUniques(result);
   },[data])
   console.log('my data is:',data);
+
+ 
+
+
   return (
     <>
     {data.myAnswers && data.myAnswers.length > 0 ? (
@@ -43,6 +48,31 @@ const QuestionDisplay = ({data}) => {
                 <p className="bg-slate-200 rounded-md p-1 my-1" key={index}>{answer}</p>
               )))
               }
+              {question.type === "radio" && (
+                <>
+                  {(() => {
+                    const answerCounts = question.answers.reduce((acc, answer) => {
+                      acc[answer] = (acc[answer] || 0) + 1;
+                      return acc;
+                    }, {});
+
+                    const chartData = Object.entries(answerCounts).map(([name, value]) => ({ name, value }));
+
+                    return (
+                      <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={chartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Legend />
+                          <Bar dataKey="value" fill="#8884d8" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    );
+                  })()}
+                </>
+)}
 
             </div>
             
