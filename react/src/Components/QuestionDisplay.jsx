@@ -1,28 +1,9 @@
 import { useEffect, useState } from "react"
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import PropTypes from 'prop-types';
 
 const QuestionDisplay = ({data}) => {
-  const [uniques, setUniques] = useState([])
-
-  useEffect(()=>{
-    if (!data.myAnswers) return;
-    const countDict = data.myAnswers.reduce((acc,curr)=>{
-      const {answers} = curr;
-      acc[answers] = (acc[answers] || 0) + 1;
-      return acc;
-    }, {});
-
-    const result = data.myAnswers.map((obj)=>({
-      ...obj,
-      count: countDict[obj.answers] || 0,
-    }));
-    console.log('este es el resultado',result);
-    setUniques(result);
-  },[data])
-  console.log('my data is:',data);
-
  
-
 
   return (
     <>
@@ -86,4 +67,10 @@ const QuestionDisplay = ({data}) => {
     </>
   )
 }
+QuestionDisplay.propTypes = {
+  data: PropTypes.shape({
+    myAnswers: PropTypes.array,
+  }),
+};
+
 export default QuestionDisplay
